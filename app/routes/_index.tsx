@@ -183,7 +183,18 @@ export default function Index() {
 			groupData[key].commits.add(entry.commit);
 		});
 
-		const sortedKeys = Object.keys(groupData).sort();
+		let sortedKeys = Object.keys(groupData);
+
+		if (
+			viewType === 'hour' ||
+			viewType === 'dayOfMonth' ||
+			viewType === 'month' ||
+			viewType === 'year'
+		) {
+			sortedKeys = sortedKeys.sort((a, b) => parseInt(a) - parseInt(b)); // Sort numerically
+		} else {
+			sortedKeys = sortedKeys.sort(); // Default lexicographical sort
+		}
 
 		if (metricType === 'changes') {
 			return {
