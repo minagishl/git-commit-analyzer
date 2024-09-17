@@ -30,7 +30,7 @@ This project is a Git Commit Analyzer that allows you to visualize git commit st
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/git-commit-analyzer.git
+   git clone https://github.com/minagishl/git-commit-analyzer.git
    ```
 
 2. Install the dependencies:
