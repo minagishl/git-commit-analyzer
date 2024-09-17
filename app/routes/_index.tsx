@@ -185,15 +185,19 @@ export default function Index() {
 
 		let sortedKeys = Object.keys(groupData);
 
+		const dayOrder = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 		if (
 			viewType === 'hour' ||
 			viewType === 'dayOfMonth' ||
 			viewType === 'month' ||
 			viewType === 'year'
 		) {
-			sortedKeys = sortedKeys.sort((a, b) => parseInt(a) - parseInt(b)); // Sort numerically
+			sortedKeys = sortedKeys.sort((a, b) => parseInt(a) - parseInt(b));
+		} else if (viewType === 'weekDay') {
+			sortedKeys = sortedKeys.sort((a, b) => dayOrder.indexOf(a) - dayOrder.indexOf(b));
 		} else {
-			sortedKeys = sortedKeys.sort(); // Default lexicographical sort
+			sortedKeys = sortedKeys.sort();
 		}
 
 		if (metricType === 'changes') {
