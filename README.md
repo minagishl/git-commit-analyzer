@@ -1,47 +1,108 @@
-# Welcome to Remix + Cloudflare!
+# Git Commit Analyzer
 
-- 📖 [Remix docs](https://remix.run/docs)
-- 📖 [Remix Cloudflare docs](https://remix.run/guides/vite#cloudflare)
+This project is a Git Commit Analyzer that allows you to visualize git commit statistics using an interactive dashboard. The application is built using Remix, Cloudflare Pages, and incorporates Chart.js for visualization.
 
-## Development
+## Features
 
-Run the dev server:
+- **Git Log Parsing**: Extract commit data from a git log file.
+- **Chart Visualization**: Visualize commit metrics, including insertions, deletions, and commit frequencies by various dimensions like author, date, and time.
+- **Responsive Interface**: Built with React and Tailwind CSS for a smooth user experience on all devices.
+- **Cloudflare Integration**: Deploy seamlessly to Cloudflare Pages.
 
-```sh
-npm run dev
-```
+## Technologies Used
 
-To run Wrangler:
+- **[Remix](https://remix.run/)**: React framework for full-stack applications.
+- **[Cloudflare](https://www.cloudflare.com/)**: Used for deployment via Cloudflare Pages.
+- **[Chart.js](https://www.chartjs.org/)**: Used for rendering visual charts.
+- **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for styling.
+- **TypeScript**: Ensures type safety across the application.
+- **ESLint**: Code quality and consistency enforcement.
 
-```sh
-npm run build
-npm run start
-```
+## Getting Started
 
-## Typegen
+### Prerequisites
 
-Generate types for your Cloudflare bindings in `wrangler.toml`:
+- **Node.js v20.x.x** or above (see `.nvmrc` for the version).
+- **npm** for managing dependencies.
 
-```sh
+### Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/git-commit-analyzer.git
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   This will start a local development server.
+
+### Using the Git Commit Analyzer
+
+1. Obtain the git log from your repository by running:
+
+   ```bash
+   git log --numstat --date=iso-strict > gitlog.txt
+   ```
+
+2. Copy the content of the `gitlog.txt` file and paste it into the text area in the web application.
+3. Click on "Analyze" to visualize the commit data.
+
+### Building for Production
+
+1. Build the project for production:
+
+   ```bash
+   npm run build
+   ```
+
+2. Deploy to Cloudflare Pages:
+
+   ```bash
+   npm run deploy
+   ```
+
+### Type Generation for Cloudflare Bindings
+
+If you modify `wrangler.toml`, regenerate the Cloudflare types:
+
+```bash
 npm run typegen
 ```
 
-You will need to rerun typegen whenever you make changes to `wrangler.toml`.
+## Linting and Type Checking
 
-## Deployment
+- To check for lint errors:
 
-First, build your app for production:
+  ```bash
+  npm run lint
+  ```
 
-```sh
-npm run build
-```
+- To check for TypeScript type errors:
 
-Then, deploy your app to Cloudflare Pages:
+  ```bash
+  npm run typecheck
+  ```
 
-```sh
-npm run deploy
-```
+## Project Structure
 
-## Styling
+- **`app/`**: Contains all the front-end React components and route logic.
+- **`public/`**: Contains static assets like icons and images.
+- **`functions/`**: Contains the Cloudflare Pages functions.
+- **`tailwind.config.ts`**: Configuration file for Tailwind CSS.
+- **`tsconfig.json`**: TypeScript configuration.
+- **`wrangler.toml`**: Configuration file for Cloudflare Workers.
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
