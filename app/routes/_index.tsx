@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { MetaFunction } from '@remix-run/react';
 import { Bar } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
@@ -11,6 +12,20 @@ import {
 } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
+export const meta: MetaFunction = () => {
+	return [
+		{ title: 'Git Commit Analyzer' },
+		{
+			property: 'og:title',
+			content: 'Git Commit Analyzer',
+		},
+		{
+			name: 'description',
+			content: 'Analyze your git commit logs',
+		},
+	];
+};
 
 export default function Index() {
 	const [gitLog, setGitLog] = useState('');
